@@ -11,7 +11,8 @@
 	<groupId>be.pxl</groupId>
 	<artifactId>Microservices</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Microservices</name>
+    <packaging>pom</packaging>
+    <name>Microservices</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -20,7 +21,13 @@
 	<developers>
 		<developer/>
 	</developers>
-	<scm>
+    <modules>
+        <module>employee-service</module>
+        <module>department-service</module>
+		<module>organization-service</module>
+        <module>notification-service</module>
+    </modules>
+    <scm>
 		<connection/>
 		<developerConnection/>
 		<tag/>
@@ -54,6 +61,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>
