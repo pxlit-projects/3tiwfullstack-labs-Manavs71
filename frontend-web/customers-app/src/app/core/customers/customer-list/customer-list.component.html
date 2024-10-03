@@ -1,8 +1,8 @@
 <app-filter></app-filter>
 <div class="md:container md:mx-auto container mx-auto mt-10">
   <div class="grid grid-cols-3 gap-6">
-    <app-customer-item></app-customer-item>
-    <app-customer-item></app-customer-item>
-    <app-customer-item></app-customer-item>
+    @for(item of customers; track item.name){
+    <app-customer-item [customer]="item"></app-customer-item>
+    }
   </div>
 </div>
