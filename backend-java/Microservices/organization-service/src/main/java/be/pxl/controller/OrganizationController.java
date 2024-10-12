@@ -1,8 +1,11 @@
 package be.pxl.controller;
 
+import be.pxl.Department;
 import be.pxl.Organization;
 import be.pxl.services.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,9 +33,11 @@ public class OrganizationController {
 
     // POST method to create a new organization
     @PostMapping
-    public Organization createOrganization(@RequestBody Organization organization) {
+    public ResponseEntity<Organization> createOrganization(@RequestBody Organization organization) {
         // Logic to create a new organization
-        return organizationService.save(organization);
+        Organization newOrganization = organizationService.save(organization);
+        return new ResponseEntity<>(newOrganization, HttpStatus.CREATED);
+
     }
 
     // PUT method to update an organization by ID

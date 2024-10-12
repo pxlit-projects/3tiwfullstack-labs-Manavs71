@@ -68,4 +68,50 @@ public class EmployeeTests {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    public void testFindEmployeeById() throws Exception {
+        // Create an employee in the repository
+        Employee employee = Employee.builder()
+                .age(30)
+                .name("John Doe")
+                .position("Developer")
+                .build();
+        Employee savedEmployee = employeeRepository.save(employee);
+
+        // Perform the GET request for the saved employee by ID
+        mockMvc.perform(MockMvcRequestBuilders.get("/employee/{id}", savedEmployee.getId())
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testFindAllEmployees() throws Exception {
+        // Create two employees in the repository
+        Employee employee1 = Employee.builder()
+                .age(25)
+                .name("Alice")
+                .position("Engineer")
+                .build();
+
+        Employee employee2 = Employee.builder()
+                .age(35)
+                .name("Bob")
+                .position("Manager")
+                .build();
+
+        employeeRepository.save(employee1);
+        employeeRepository.save(employee2);
+
+        // Perform the GET request to fetch all employees
+        mockMvc.perform(MockMvcRequestBuilders.get("/employee")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        assertEquals(2, employeeRepository.findAll().size());
+    }
+
+
+
+
 }

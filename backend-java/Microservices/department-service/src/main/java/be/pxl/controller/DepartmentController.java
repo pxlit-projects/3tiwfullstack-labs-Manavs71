@@ -3,6 +3,7 @@ package be.pxl.controller;
 import be.pxl.Department;
 import be.pxl.services.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class DepartmentController {
     @PostMapping()
     public ResponseEntity<Department> addDepartment(@RequestBody Department department) {
         Department newDepartment = departmentService.addDepartment(department);
-        return ResponseEntity.ok(newDepartment);
+        return new ResponseEntity<>(newDepartment, HttpStatus.CREATED);
     }
 
     // Endpoint to find a department by ID
