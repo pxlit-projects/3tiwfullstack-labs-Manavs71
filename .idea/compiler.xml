@@ -9,6 +9,7 @@
         <module name="organization-service" />
         <module name="department-service" />
         <module name="notification-service" />
+        <module name="discovery-service" />
         <module name="employee-service" />
       </profile>
     </annotationProcessing>
@@ -17,6 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Microservices" options="" />
       <module name="department-service" options="-parameters" />
+      <module name="discovery-service" options="-parameters" />
       <module name="employee-service" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="organization-service" options="-parameters" />
