@@ -1,8 +1,12 @@
-<app-filter></app-filter>
+<app-filter (filterChanged)="handleFilter($event)"></app-filter>
+
 <div class="md:container md:mx-auto container mx-auto mt-10">
   <div class="grid grid-cols-3 gap-6">
-    @for(item of customers; track item.name){
+    @for(item of filteredData; track item.name){
     <app-customer-item [customer]="item"></app-customer-item>
     }
   </div>
 </div>
+<app-add-customer (addCustomer)="processAdd($event)"></app-add-customer>
+
+

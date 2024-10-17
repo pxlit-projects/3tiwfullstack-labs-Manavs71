@@ -10,7 +10,7 @@ import {NgClass} from "@angular/common";
   styleUrl: './customer-item.component.css'
 })
 export class CustomerItemComponent {
-  @Input() customer!: Customer = new Customer('John Doe', 'john@doe.com', 'Hasselt', 'elfdelinie 123', 'Belgium', 6);
+  @Input() customer: Customer = new Customer('John Doe', 'john@doe.com', 'Hasselt', 'elfdelinie 123', 'Belgium', 6);
 
   getDetails(): void{
     console.log(this.customer);

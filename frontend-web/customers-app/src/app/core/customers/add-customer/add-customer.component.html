@@ -1,0 +1,74 @@
+
+<div class="container mx-auto mt-5">
+  <h2 class="text-xl mb-3">Add Customer</h2>
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+      <input type="text" id="name" formControlName="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      @if (customerForm.get('name')?.touched && customerForm.get('name')?.hasError('required')){
+      <div class="text-red-500 text-sm mt-1">Name is required</div>
+      }
+
+    </div>
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+      <input type="email" id="email" formControlName="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      @if (customerForm.get('email')?.touched && customerForm.get('email')?.hasError('required')) {
+      <div class="text-red-500 text-sm mt-1">Email is required</div>
+      }
+      @if(customerForm.get('email')?.touched && customerForm.get('email')?.hasError('email')){
+      <div class="text-red-500 text-sm mt-1">This is not a valid email address</div>
+      }
+
+    </div>
+    <div class="mb-4">
+      <label for="avatar" class="block text-gray-700 text-sm font-bold mb-2">Avatar url:</label>
+      <input type="text" id="avatar" formControlName="avatar" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      @if (customerForm.get('avatar')?.touched && customerForm.get('avatar')?.hasError('required')) {
+      <div class="text-red-500 text-sm mt-1">Avatar is required</div>
+      }
+
+    </div>
+    <div class="mb-4">
+      <label for="city" class="block text-gray-700 text-sm font-bold mb-2">City:</label>
+      <input type="text" id="city" formControlName="city" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      @if(customerForm.get('city')?.touched && customerForm.get('city')?.hasError('required')) {
+      <div class="text-red-500 text-sm mt-1">City is required</div>
+      }
+
+    </div>
+    <div class="mb-4">
+      <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Address:</label>
+      <input type="text" id="address" formControlName="address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      @if(customerForm.get('address')?.touched && customerForm.get('address')?.hasError('required')){
+      <div class="text-red-500 text-sm mt-1">Address is required</div>
+      }
+
+    </div>
+    <div class="mb-4">
+      <label for="country" class="block text-gray-700 text-sm font-bold mb-2">Country:</label>
+      <select formControlName="country" id="country" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <option value="" ></option>
+        <option value="belgium">Belgium</option>
+        <option value="USA">United states</option>
+        <option value="other">Other</option>
+      </select>
+      @if(customerForm.get('country')?.touched && customerForm.get('country')?.hasError('required')){
+      <div class="text-red-500 text-sm mt-1">Country is required</div>
+      }
+
+    </div>
+    <div class="mb-6">
+      <label for="vat" class="block text-gray-700 text-sm font-bold mb-2">VAT:</label>
+      <input type="number" id="vat" formControlName="vat" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      @if(customerForm.get('vat')?.touched && customerForm.get('vat')?.hasError('required')){
+      <div class="text-red-500 text-sm mt-1">VAT is required</div>
+      }
+
+    </div>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" [disabled]="!customerForm.valid">
+      Add Customer
+    </button>
+
+  </form>
+</div>
