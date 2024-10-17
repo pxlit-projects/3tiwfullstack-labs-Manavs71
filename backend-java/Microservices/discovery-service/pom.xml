@@ -5,8 +5,6 @@
         <groupId>be.pxl</groupId>
         <artifactId>Microservices</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-
-
     </parent>
 
     <artifactId>discovery-service</artifactId>
