@@ -1,6 +1,8 @@
 package be.pxl.services;
 
 import be.pxl.Employee;
+import be.pxl.client.NotificationClient;
+import be.pxl.model.NotificationRequest;
 import be.pxl.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,10 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    private final NotificationClient notificationClient;
+    public EmployeeService(EmployeeRepository employeeRepository, NotificationClient notificationClient) {
         this.employeeRepository = employeeRepository;
+        this.notificationClient = notificationClient;
     }
 
     public List<Employee> findAll() {
@@ -26,6 +30,15 @@ public class EmployeeService {
 
 
     public Employee add(Employee employee) {
+
+        NotificationRequest notificationRequest = NotificationRequest.builder()
+                .message("Employee Created")
+                .sender("Manav").build();
+
+        notificationClient.sendMessage(notificationRequest);
+
         return employeeRepository.save(employee);
+
+
     }
 }
